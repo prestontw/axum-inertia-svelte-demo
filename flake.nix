@@ -12,8 +12,9 @@
         devShell = with pkgs; mkShell {
           buildInputs = [
             pnpm
-            rustup
+            nodejs_22
             tailwindcss
+            rustup
             just
             watchexec
           ];
