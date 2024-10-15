@@ -4,6 +4,8 @@
   export let user
 </script>
 
+<Layout>
 <p>
 Hello, there {user.name}
 </p>
+</Layout>

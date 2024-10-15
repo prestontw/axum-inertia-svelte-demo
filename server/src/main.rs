@@ -19,6 +19,5 @@ async fn main() {
 }
 
 async fn get_root(i: Inertia) -> impl IntoResponse {
-    println!("called get_root");
     i.render("User/Show", json!({ "user": {"name": "John Smith"} }))
 }
