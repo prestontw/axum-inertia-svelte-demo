@@ -19,8 +19,6 @@ async fn main() {
 }
 
 async fn get_root(i: Inertia) -> impl IntoResponse {
-    i.render(
-        "Pages/Home",
-        json!({ "posts": vec!["post one", "post two"] }),
-    )
+    println!("called get_root");
+    i.render("Pages/User/Show", json!({ "user": {"name": "John Smith"} }))
 }

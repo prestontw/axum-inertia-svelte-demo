@@ -1,8 +1,13 @@
 import './app.css'
-import App from './App.svelte'
+import { createInertiaApp } from '@inertiajs/svelte'
 
-const app = new App({
-  target: document.getElementById('app')!,
+createInertiaApp({
+  resolve: name => {
+    const pages = import.meta.glob('./Pages/**/*.svelte', { eager: true })
+    return pages[`./Pages/${name}.svelte`]
+  },
+  setup({ el, App, props }) {
+    new App({ target: el, props })
+  },
 })
 
-export default app
