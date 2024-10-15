@@ -17,7 +17,7 @@
             rustup
             just
             watchexec
-          ];
+          ] ++ lib.optionals stdenv.isDarwin [libiconv llvmPackages.bintools];
         };
       });
 }
