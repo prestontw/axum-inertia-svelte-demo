@@ -17,6 +17,7 @@
             rustup
             just
             watchexec
+            nodePackages.svelte-language-server
           ] ++ lib.optionals stdenv.isDarwin [libiconv llvmPackages.bintools];
         };
       });
