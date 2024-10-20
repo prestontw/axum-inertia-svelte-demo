@@ -1,6 +1,7 @@
 use axum::{response::IntoResponse, routing::get, Router};
 use axum_inertia::{vite, Inertia};
-use serde_json::json;
+use serde::Serialize;
+use typeshare::typeshare;
 
 #[tokio::main]
 async fn main() {
@@ -18,6 +19,25 @@ async fn main() {
     axum::serve(listener, app).await.unwrap();
 }
 
+#[typeshare]
+#[derive(Serialize)]
+struct UserShowProps {
+    user: User,
+}
+
+#[typeshare]
+#[derive(Serialize)]
+struct User {
+    name: String,
+}
+
 async fn get_root(i: Inertia) -> impl IntoResponse {
-    i.render("User/Show", json!({ "user": {"name": "John Smith"} }))
+    i.render(
+        "User/Show",
+        UserShowProps {
+            user: User {
+                name: "John Smith".to_string(),
+            },
+        },
+    )
 }

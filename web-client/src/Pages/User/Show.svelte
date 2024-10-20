@@ -1,7 +1,8 @@
 <script lang="ts">
   import Layout from "./Layout.svelte";
+  import type {UserShowProps} from "../../shared_definitions"
 
-  const {user}: {user: {name: string}} = $props();
+  const {user}: UserShowProps = $props();
 </script>
 
 <Layout>
