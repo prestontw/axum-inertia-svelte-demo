@@ -1,13 +1,14 @@
 import './app.css'
 import { createInertiaApp } from '@inertiajs/svelte'
+import { mount } from 'svelte'
 
 createInertiaApp({
-  resolve: name => {
+  resolve: (name: string) => {
     const pages = import.meta.glob('./Pages/**/*.svelte', { eager: true })
     return pages[`./Pages/${name}.svelte`]
   },
   setup({ el, App, props }) {
-    new App({ target: el, props })
+    mount(App, { target: el, props })
   },
 })
 

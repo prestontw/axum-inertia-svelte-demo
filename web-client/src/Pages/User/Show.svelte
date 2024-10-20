@@ -1,7 +1,7 @@
-<script>
+<script lang="ts">
   import Layout from "./Layout.svelte";
 
-  export let user;
+  const {user}: {user: {name: string}} = $props();
 </script>
 
 <Layout>

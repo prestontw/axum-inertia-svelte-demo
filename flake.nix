@@ -18,6 +18,7 @@
             just
             watchexec
             nodePackages.svelte-language-server
+            nodePackages.typescript-language-server
           ] ++ lib.optionals stdenv.isDarwin [libiconv llvmPackages.bintools];
         };
       });
