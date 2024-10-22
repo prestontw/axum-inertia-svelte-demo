@@ -6,7 +6,7 @@
 </script>
 
 <Layout>
-  <p>
+  <p class="underline text-3xl font-bold">
     Hello, there {user.name}
   </p>
 </Layout>
