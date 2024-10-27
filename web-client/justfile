@@ -1,0 +1,8 @@
+dev:
+    pnpm run dev
+
+init:
+    pnpm i
+
+run task:
+    pnpm run {{task}}
