@@ -3,10 +3,9 @@
 */
 
 export interface User {
-	name: string;
+  name: string;
 }
 
 export interface UserShowProps {
-	user: User;
+  user: User;
 }
-
