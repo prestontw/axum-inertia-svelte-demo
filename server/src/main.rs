@@ -1,7 +1,27 @@
-use axum::{response::IntoResponse, routing::get, Router};
-use axum_inertia::{vite, Inertia};
-use serde::Serialize;
+use std::sync::Arc;
+
+use axum::{
+    extract::{FromRef, State},
+    response::IntoResponse,
+    Router,
+};
+use axum_extra::routing::{RouterExt, TypedPath};
+use axum_inertia::{vite, Inertia, InertiaConfig};
+use serde::{Deserialize, Serialize};
+use tokio::sync::Mutex;
 use typeshare::typeshare;
+
+#[derive(Clone)]
+struct AppState {
+    inertia: InertiaConfig,
+    users: Arc<Mutex<Vec<User>>>,
+}
+
+impl FromRef<AppState> for InertiaConfig {
+    fn from_ref(input: &AppState) -> Self {
+        input.inertia.clone()
+    }
+}
 
 #[tokio::main]
 async fn main() {
@@ -11,8 +31,16 @@ async fn main() {
         .lang("en")
         .title("My inertia app")
         .into_config();
+
+    let app_state = AppState {
+        inertia,
+        users: Arc::new(Mutex::new(vec![User {
+            name: "John Smith".into(),
+            titles: vec!["Mr".into(), "Esq".into()],
+        }])),
+    };
     // build our application with a single route
-    let app: Router = Router::new().route("/", get(get_root)).with_state(inertia);
+    let app: Router = Router::new().typed_get(get_root).with_state(app_state);
 
     // run our app with hyper, listening globally on port 3000
     let listener = tokio::net::TcpListener::bind("0.0.0.0:3000").await.unwrap();
@@ -22,22 +50,27 @@ async fn main() {
 #[typeshare]
 #[derive(Serialize)]
 struct UserShowProps {
-    user: User,
+    users: Vec<User>,
 }
 
+#[derive(Deserialize, TypedPath)]
+#[typed_path("/")]
+struct Root;
+
+/// Add vector so we can use proper form dependency
 #[typeshare]
-#[derive(Serialize)]
+#[derive(Serialize, Clone)]
 struct User {
     name: String,
+    titles: Vec<String>,
 }
 
-async fn get_root(i: Inertia) -> impl IntoResponse {
-    i.render(
-        "User/Show",
-        UserShowProps {
-            user: User {
-                name: "John Smith".to_string(),
-            },
-        },
-    )
+#[axum::debug_handler]
+async fn get_root(
+    _: Root,
+    i: Inertia,
+    State(AppState { users, .. }): State<AppState>,
+) -> impl IntoResponse {
+    let users = users.lock_owned().await.clone();
+    i.render("User/Show", UserShowProps { users })
 }
