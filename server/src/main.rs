@@ -69,10 +69,12 @@ struct UserShowProps {
 #[typed_path("/")]
 struct Root;
 
+#[typeshare]
 #[derive(Deserialize, TypedPath)]
 #[typed_path("/users")]
 struct Users;
 
+#[typeshare]
 #[derive(Deserialize, TypedPath)]
 #[typed_path("/users/:id")]
 struct UserId {

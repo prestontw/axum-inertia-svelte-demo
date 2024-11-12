@@ -1,6 +1,7 @@
 <script lang="ts">
   import { router } from '@inertiajs/svelte';
   import type { User } from '../../shared_definitions';
+  import { userIdRoute, usersRoute } from '../../routes';
 
   let {
     name: originalName,
@@ -16,9 +17,9 @@
     e.preventDefault();
     let form: Partial<User> = { name, titles, id };
     if (id) {
-      router.put(`/users/${id}`, form);
+      router.put(userIdRoute({ id }), form);
     } else {
-      router.post('/users', form);
+      router.post(usersRoute({}), form);
     }
     onsubmit?.();
   }
