@@ -8,3 +8,5 @@
 - https://1password.github.io/typeshare/installation.html
 - https://tailwindcss.com/blog/automatic-class-sorting-with-prettier
 - https://svelte.dev/blog/sv-the-svelte-cli (for prettier, and playwright!)
+- https://playwright.dev/docs/codegen-intro for generating tests
+- https://v2.inertiajs.com/validation (to do, validation and errors reported from server)
