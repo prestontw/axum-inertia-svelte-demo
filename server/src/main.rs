@@ -108,7 +108,7 @@ async fn add_user(
     State(AppState { users, .. }): State<AppState>,
     Json(new_user): Json<NewUser>,
 ) -> impl IntoResponse {
-    let mut users = users.lock_owned().await.clone();
+    let mut users = users.lock_owned().await;
     let max_id = users.iter().map(|user| user.id).max().unwrap_or(0);
     let new_user = User {
         id: max_id + 1,
@@ -127,7 +127,7 @@ async fn update_user(
     if user.id != id {
         return Err("body did not match path");
     }
-    let mut users = users.lock_owned().await.clone();
+    let mut users = users.lock_owned().await;
     let original_user = users
         .iter_mut()
         .find(|user| user.id == id)
