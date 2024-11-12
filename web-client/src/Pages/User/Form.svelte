@@ -6,7 +6,8 @@
     name: originalName,
     titles: originalTitles,
     id,
-  }: { name?: string; titles?: string[]; id?: number } = $props();
+    onsubmit,
+  }: { name?: string; titles?: string[]; id?: number; onsubmit?: () => void } = $props();
 
   let name = $state(originalName ?? '');
   let titles = $state(originalTitles ?? []);
@@ -19,6 +20,7 @@
     } else {
       router.post('/users', form);
     }
+    onsubmit?.();
   }
   $inspect(titles);
 </script>
@@ -30,7 +32,7 @@
   <div class="form-error">{form.errors.email}</div>
   {/if}
     -->
-  {#each titles as title, i}
+  {#each titles as _, i}
     <input type="text" bind:value={titles[i]} />
   {/each}
   <button

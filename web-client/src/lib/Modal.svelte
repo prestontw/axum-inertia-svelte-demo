@@ -1,5 +1,11 @@
 <script lang="ts">
-  let { showModal = $bindable(), header, children, onclose } = $props();
+  import type { Snippet } from 'svelte';
+  let {
+    showModal = $bindable(),
+    header,
+    children,
+    onclose,
+  }: { showModal: boolean; header?: Snippet; children?: Snippet; onclose?: () => void } = $props();
 
   let dialog: HTMLDialogElement = $state();
 

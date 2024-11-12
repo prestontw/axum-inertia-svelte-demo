@@ -27,8 +27,12 @@
       {#snippet header()}
         <h1>Edit Contact</h1>
       {/snippet}
-      <Form id={selectedUser?.id} name={selectedUser?.name} titles={selectedUser?.titles}
-      ></Form></Modal
+      <Form
+        id={selectedUser?.id}
+        name={selectedUser?.name}
+        titles={selectedUser?.titles}
+        onsubmit={() => (selected = undefined)}
+      /></Modal
     >
   {/key}
 </Layout>
