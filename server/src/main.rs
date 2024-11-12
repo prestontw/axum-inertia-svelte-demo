@@ -34,10 +34,18 @@ async fn main() {
 
     let app_state = AppState {
         inertia,
-        users: Arc::new(Mutex::new(vec![User {
-            name: "John Smith".into(),
-            titles: vec!["Mr".into(), "Esq".into()],
-        }])),
+        users: Arc::new(Mutex::new(vec![
+            User {
+                id: 1,
+                name: "John Smith".into(),
+                titles: vec!["Mr".into(), "Esq".into()],
+            },
+            User {
+                id: 2,
+                name: "Pokamon".into(),
+                titles: vec![],
+            },
+        ])),
     };
     // build our application with a single route
     let app: Router = Router::new().typed_get(get_root).with_state(app_state);
@@ -61,16 +69,16 @@ struct Root;
 #[typeshare]
 #[derive(Serialize, Clone)]
 struct User {
+    id: u32,
     name: String,
     titles: Vec<String>,
 }
 
-#[axum::debug_handler]
 async fn get_root(
     _: Root,
     i: Inertia,
     State(AppState { users, .. }): State<AppState>,
 ) -> impl IntoResponse {
     let users = users.lock_owned().await.clone();
-    i.render("User/Show", UserShowProps { users })
+    i.render("Home", UserShowProps { users })
 }

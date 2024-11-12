@@ -1,5 +1,7 @@
-<script>
+<script lang="ts">
   import { inertia } from '@inertiajs/svelte';
+  import type { Snippet } from 'svelte';
+  let { children }: { children: Snippet } = $props();
 </script>
 
 <main>
@@ -9,6 +11,6 @@
     <a use:inertia href="/contact">Contact</a>
   </header>
   <article>
-    <slot />
+    {@render children()}
   </article>
 </main>

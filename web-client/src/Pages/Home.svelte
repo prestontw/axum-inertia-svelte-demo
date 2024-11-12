@@ -1,7 +1,8 @@
 <script lang="ts">
-  import { inertia, Link } from '@inertiajs/svelte';
+  import Show from './User/Show.svelte';
+  import type { UserShowProps } from '../shared_definitions';
+
+  let props: UserShowProps = $props();
 </script>
 
-<a href="/" use:inertia>Home</a>
-
-<Link href="/">Home</Link>
+<Show {...props} />
