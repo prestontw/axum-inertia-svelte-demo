@@ -6,3 +6,9 @@ init:
 
 run task:
     pnpm run {{task}}
+
+playwright-record:
+    pnpm exec playwright codegen
+
+playwright-ui:
+    pnpm exec playwright test --ui

@@ -20,6 +20,7 @@
             # typeshare # install through cargo instead
             nodePackages.svelte-language-server
             nodePackages.typescript-language-server
+            nodePackages.prettier
           ] ++ lib.optionals stdenv.isDarwin [libiconv llvmPackages.bintools];
         };
       });

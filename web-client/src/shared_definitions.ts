@@ -4,12 +4,11 @@
 
 /** Add vector so we can use proper form dependency */
 export interface User {
-	id: number;
-	name: string;
-	titles: string[];
+  id: number;
+  name: string;
+  titles: string[];
 }
 
 export interface UserShowProps {
-	users: User[];
+  users: User[];
 }
-
