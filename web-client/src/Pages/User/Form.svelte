@@ -23,7 +23,6 @@
     }
     onsubmit?.();
   }
-  $inspect(titles);
 </script>
 
 <form onsubmit={submit}>

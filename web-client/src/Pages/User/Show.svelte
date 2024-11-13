@@ -7,6 +7,7 @@
   const { users }: UserShowProps = $props();
   let selected: number | undefined = $state();
   let selectedUser = $derived(users.find((user) => user.id === selected));
+  let addingUser = $state(false);
 </script>
 
 <Layout>
@@ -35,4 +36,14 @@
       /></Modal
     >
   {/key}
+  <button
+    class="flex-auto rounded bg-blue-500 px-4 py-2 font-bold text-white hover:bg-blue-700"
+    onclick={() => (addingUser = true)}>Add User</button
+  >
+  <Modal bind:showModal={addingUser}>
+    {#snippet header()}
+      <h1>Add Contact</h1>
+    {/snippet}
+    <Form onsubmit={() => (addingUser = false)} />
+  </Modal>
 </Layout>
