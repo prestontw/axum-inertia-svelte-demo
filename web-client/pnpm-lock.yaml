@@ -9,8 +9,8 @@ importers:
   .:
     dependencies:
       '@inertiajs/svelte':
-        specifier: 2.0.0-beta.2
-        version: 2.0.0-beta.2(svelte@5.0.0-next.272)
+        specifier: ^2.0.0
+        version: 2.0.0(svelte@5.0.0-next.272)
     devDependencies:
       '@playwright/test':
         specifier: ^1.45.3
@@ -203,11 +203,11 @@ packages:
     cpu: [x64]
     os: [win32]
 
-  '@inertiajs/core@2.0.0-beta.2':
-    resolution: {integrity: sha512-2fi1YAncmkQAGko+miQanobF5anSO9lBK8i6Fgl0YKDjLQJg7+Sdr/yQIDwJtvFYgOgDbAhIcAawn9usc0/9bQ==}
+  '@inertiajs/core@2.0.0':
+    resolution: {integrity: sha512-2kvlk731NjwfXUku/ZoXsZNcOzx985icHtTC1dgN+8sAZtJfEg9QBrQ7sBjeLYiWtKgobJdwwpeDaexEneAtLQ==}
 
-  '@inertiajs/svelte@2.0.0-beta.2':
-    resolution: {integrity: sha512-e7WvqWRW9fduSbpek0k1Rypp24D9k6drL3d6h9Dsw8AlR9pGY46b47Mg/1XRNLeh9xxkJVDO7GPcsSbIo7HdCA==}
+  '@inertiajs/svelte@2.0.0':
+    resolution: {integrity: sha512-fPp0O8EkTb7mp20WZVv8yUf7vXi5cA3TPnvjrDL4YuSIu3AzwcbBKFK9BmGjg1a/Lhnasea8a8Go3BzSmt7TRA==}
     peerDependencies:
       svelte: ^4.0.0 || ^5.0.0 || ^5.0.0-next.244
 
@@ -739,9 +739,6 @@ packages:
     resolution: {integrity: sha512-bdok/XvKII3nUpklnV6P2hxtMNrCboOjAcyBuQnWEhO665FwrSNRxU+AqpsyvO6LgGYPspN+lu5CLtw4jPRKNA==}
     engines: {node: '>=0.10.0'}
 
-  nprogress@0.2.0:
-    resolution: {integrity: sha512-I19aIingLgR1fmhftnbWWO3dXc0hSxqHQHQb3H8m+K3TnEn/iSeTZZOyvKXWqQESMwuUVnatlCnZdLBZZt2VSA==}
-
   object-assign@4.1.1:
     resolution: {integrity: sha512-rJgTQnkUnH1sFw8yT6VSU3zD3sWmu6sZhIseY8VX+GRu3P6F7Fu+JNDoXfklElbLJSnc3FUQHVe4cU5hj+BcUg==}
     engines: {node: '>=0.10.0'}
@@ -1176,18 +1173,17 @@ snapshots:
   '@esbuild/win32-x64@0.21.5':
     optional: true
 
-  '@inertiajs/core@2.0.0-beta.2':
+  '@inertiajs/core@2.0.0':
     dependencies:
       axios: 1.7.7
       deepmerge: 4.3.1
-      nprogress: 0.2.0
       qs: 6.13.0
     transitivePeerDependencies:
       - debug
 
-  '@inertiajs/svelte@2.0.0-beta.2(svelte@5.0.0-next.272)':
+  '@inertiajs/svelte@2.0.0(svelte@5.0.0-next.272)':
     dependencies:
-      '@inertiajs/core': 2.0.0-beta.2
+      '@inertiajs/core': 2.0.0
       html-escape: 2.0.0
       lodash: 4.17.21
       svelte: 5.0.0-next.272
@@ -1666,8 +1662,6 @@ snapshots:
   normalize-path@3.0.0: {}
 
   normalize-range@0.1.2: {}
-
-  nprogress@0.2.0: {}
 
   object-assign@4.1.1: {}
 
