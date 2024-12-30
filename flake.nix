@@ -13,7 +13,6 @@
           buildInputs = [
             pnpm
             nodejs_22
-            tailwindcss
             rustup
             just
             watchexec
