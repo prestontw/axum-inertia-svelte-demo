@@ -11,7 +11,6 @@ export interface User {
   id: number;
   name: string;
   titles: string[];
-
 }
 
 export interface UserId {

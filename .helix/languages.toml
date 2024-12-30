@@ -1,5 +1,8 @@
 [[language]]
 name = "typescript"
-# not perfect, since this doesn't use the config
-formatter = { command = "prettier", args = ["--parser", "typescript"] }
+formatter = { command = "pnpm", args = ["-C", "web-client", "exec", "prettier", "--parser", "typescript"] }
+auto-format = true
+
+[[language]]
+name = "svelte"
 auto-format = true

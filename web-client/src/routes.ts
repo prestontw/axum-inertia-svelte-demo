@@ -1,7 +1,7 @@
-import { type Users, type UserId } from "./shared_definitions";
+import { type Users, type UserId } from './shared_definitions';
 
 export function usersRoute(_: Users) {
-  return "/users";
+  return '/users';
 }
 
 export function userIdRoute(user: UserId) {
