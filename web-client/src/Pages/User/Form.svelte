@@ -7,7 +7,7 @@
 
   let form = useForm(originalUser ? { ...originalUser } : { name: '', titles: [] });
 
-  function submit(e) {
+  function submit(e: SubmitEvent) {
     e.preventDefault();
     if ('id' in $form) {
       $form.put(userIdRoute({ id: $form.id }));
