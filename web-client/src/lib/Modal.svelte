@@ -7,13 +7,13 @@
     onclose,
   }: { showModal: boolean; header?: Snippet; children?: Snippet; onclose?: () => void } = $props();
 
-  let dialog: HTMLDialogElement = $state();
+  let dialog: HTMLDialogElement | undefined = $state();
 
   $effect(() => {
     if (showModal) {
-      dialog.showModal();
+      dialog?.showModal();
     } else {
-      dialog.close();
+      dialog?.close();
     }
   });
 </script>
@@ -35,6 +35,6 @@
     {@render children?.()}
     <hr />
     <!-- svelte-ignore a11y_autofocus -->
-    <button autofocus onclick={() => dialog.close()}>close modal</button>
+    <button autofocus onclick={() => dialog?.close()}>close modal</button>
   </div>
 </dialog>
