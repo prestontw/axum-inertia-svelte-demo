@@ -1,0 +1,16 @@
+[[tools."cargo:typeshare-cli"]]
+version = "1.11.0"
+backend = "cargo:typeshare-cli"
+
+[[tools.node]]
+version = "22.8.0"
+backend = "core:node"
+"platforms.linux-arm64" = { checksum = "sha256:a23afe3a54270accabcd9be0fc0dbec6645e8c5b8b06040dcdf0086a7047622d", url = "https://nodejs.org/dist/v22.8.0/node-v22.8.0-linux-arm64.tar.gz"}
+"platforms.linux-x64" = { checksum = "sha256:a0bc969f61b96575a4b2cdd239729aa3e721384fa9ca3fb926a9582c019c1bbc", url = "https://nodejs.org/dist/v22.8.0/node-v22.8.0-linux-x64.tar.gz"}
+"platforms.macos-arm64" = { checksum = "sha256:723d53380d500087d738ee1a255fea121060602140a8e93cf7bd3013cd7531a4", url = "https://nodejs.org/dist/v22.8.0/node-v22.8.0-darwin-arm64.tar.gz"}
+"platforms.macos-x64" = { checksum = "sha256:2f56ac0a9b7f03aea854b8bf2246741179c0b758a0b1b7239d1d5b242aca0f1b", url = "https://nodejs.org/dist/v22.8.0/node-v22.8.0-darwin-x64.tar.gz"}
+"platforms.windows-x64" = { checksum = "sha256:d6e1c4fca93997224cac0bec09b4201aa018f50171d38c6b85abe483012839c9", url = "https://nodejs.org/dist/v22.8.0/node-v22.8.0-win-x64.zip"}
+
+[[tools.pnpm]]
+version = "9.12.0"
+backend = "aqua:pnpm/pnpm"

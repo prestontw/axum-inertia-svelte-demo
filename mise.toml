@@ -1,0 +1,4 @@
+[tools]
+pnpm = "9.12.0"
+node = "22.8.0"
+"cargo:typeshare-cli" = "1.11.0"
